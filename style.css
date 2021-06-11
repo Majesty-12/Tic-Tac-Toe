@@ -3,6 +3,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     background:url('./images/bg.jpg');
+    overflow-x:hidden;
     background-repeat: no-repeat;
     background-size: cover;
     /* margin-top: 40%; */
