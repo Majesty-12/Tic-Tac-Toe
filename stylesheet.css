@@ -1,0 +1,607 @@
+:root {
+  --color1: #fb7d29;
+  --color2: #000000;
+  --light-white: #f0f0f0;
+  --blue: #43dde6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* height: 50%; */
+  box-sizing: inherit;
+  font-family: "Righteous", cursive;
+  /* background:linear-gradient(orange,black); */
+}
+
+body {
+  background: var(--light-white);
+  transform: scale(0.7);
+  min-height: 100vh;
+  /* height: 50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  /* width: 100vw;
+  height: 100vh; */
+  /* overflow-x: auto; */
+  /* width: 100vw; */ 
+}
+body::before{
+  content: "";
+  position: absolute;
+  top: -200px;
+  right: -400px;
+  bottom: -200px;
+  left: -400px;
+  height: 150%;
+  /* width: 100vw; */
+  /* background-image: url('./images/game-controller.jpg'); */
+  background-size:cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  background-color: transparent;
+}
+
+h1 {
+  opacity: 0;
+  font-size: 6.5rem;
+  margin-bottom: 3rem;
+  color: var(--color2);
+  text-shadow: 4px 4px var(--color1);
+  box-shadow: 0px 8px black;
+  /* margin-top: -5rem; */
+  padding: 4px 40px;
+  border: 5px solid var(--color1);
+  background-color: white;
+  border-radius: 155px;
+}
+
+.start {
+  transform: scale(0);
+  width: auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 600;
+  font-family: "Righteous", cursive;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, var(--color1) 0%, var(--color2) 100%);
+}
+
+/* >>>>> start menu animation <<<<< */
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes menu {
+  from {
+    top: 40%;
+  }
+  to {
+    top: 5%;
+  }
+}
+
+/* >>>>> button styling covered here <<<<< */
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn1,
+.btn2 {
+  width: 100px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn1 {
+  background: black;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  width: auto;
+  height: auto;
+  padding: 2px 18px;
+  color: white;
+}
+
+.btn1:hover {
+  background: white;
+  color: black;
+  transition: 0.5s ease;
+}
+
+.btn2 {
+  background: var(--color2);
+  padding: 2px 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  width: auto;
+  height: auto;
+}
+
+.btn2:hover {
+  background: #fff;
+  color: var(--color2);
+  transition: 0.5s ease;
+}
+
+#btn-icons {
+  margin-left: 5px;
+}
+
+/* >>>>> gaming board <<<<< */
+.game {
+  position: absolute;
+  margin-top: 15rem;
+}
+
+.game .board-one {
+  position: fixed;
+}
+
+.game .cell div {
+  background: var(--color1);
+}
+
+.game div {
+  width: 130px;
+  height: 130px;
+  background: var(--color2);
+  margin: 2px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.invisible {
+  transform: scale(0);
+}
+
+/* >>>>> restart icon button <<<<< */
+.restart {
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-top: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background: var(--color2);
+  color: black;
+  font-family: "Righteous", cursive;
+  letter-spacing: 2px;
+  /* align-items: center; */
+}
+
+#icon {
+  margin-left: 5px;
+  transition: 0.3s ease;
+  color: red;
+}
+
+#icon.clicked {
+  transition: 0.3s ease;
+  animation: rotate 0.5s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*>>>>> styling X and O <<<<< */
+.x,
+.o {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+}
+
+.square .x,
+.square .o {
+  cursor: not-allowed;
+}
+
+/*>>>>> form <<<<<*/
+.name {
+  z-index: 1000;
+  top: 28%;
+  transform: scale(0);
+  position: absolute;
+  transition: 0.5s ease;
+  margin-top: 2rem;
+  margin-top: 90px;
+  padding-top: 5rem;
+}
+
+input[type="text"] {
+  /* margin-top: 2rem; */
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+  font-family: "Righteous", cursive;
+}
+
+input[type="submit"] {
+  border: none;
+  font-size: 2rem;
+  outline: none;
+  padding: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  background: var(--color2);
+  color: #fff;
+  width: 100%;
+  font-family: "Righteous", cursive;
+}
+
+/*>>>>> player's description <<<<<*/
+#player-turn {
+  float: right;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: orange;
+  font-weight: bold;
+  margin-top: 2.1rem;
+  background-color: #fff;
+  border: 4px;
+  padding: 9px 4px;
+}
+
+/*>>>>> left player info <<<<<*/
+.left-title {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.left-name {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  font-size: 3rem;
+  color:#fb7d29;
+  text-shadow: 4px 4px black;
+}
+
+.left-score {
+  position: absolute;
+  top: 60%;
+  text-shadow: 4px 4px black;
+  left: 12%;
+  font-size: 3.5rem;
+  color: white;
+}
+
+/*>>>>> right player info <<<<<*/
+
+.right-title {
+  position: absolute;
+  text-decoration: underline;
+  top: 25%;
+  right: 10%;
+  font-size: 1.5rem;
+}
+
+.right-name {
+  color:#fb7d29;
+  position: absolute;
+  right: 10%;
+  text-shadow: 4px 4px black;
+  top: 30%;
+  z-index: 100000;
+  font-size: 3rem;
+}
+
+.right-score {
+  position: absolute;
+  text-shadow: 4px 4px black;
+  color: white;
+  top: 60%;
+  right: 12%;
+  font-size: 3.5rem;
+}
+
+
+
+.btn1, .btn2 {
+    font-size: 0.6rem;
+    width: 90px;
+    height:30px;
+  }
+  
+  .game td div {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .restart {
+    padding: 5px;
+    margin: 0;
+  }
+  
+  .name {
+    top: 20%;
+  }
+  
+  .start {
+    font-size: 0.62rem;
+  }
+  
+  #x,
+  #o {
+    font-size: 2rem;
+  }
+  
+  #left-title {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    font-size: 1rem;
+  }
+  
+  #left-name {
+    left: 5%;
+    top: 40%;
+    font-size: 1.5rem;
+  }
+  
+  #left-score {
+    top: 65%;
+    left: 2%;
+    font-size: 1.5rem;
+  }
+  
+  #right-title {
+    top: 35%;
+    right: 5%;
+    font-size: 1rem;
+  }
+  
+  #right-name {
+    right: 5%;
+    top: 40%;
+    font-size: 1.5rem;
+  }
+  
+  #right-score {
+    position: absolute;
+    top: 65%;
+    right: 2%;
+    font-size: 1.5rem;
+  }
+  
+  #player-turn {
+    margin: 0;
+    /* font-size: 5rem; */
+  }
+  .box-to-make-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+    height: 100%;
+    /* background-color: red; */
+    /* width: 100%; */
+  }
+  
+  
+  @media screen and (max-width: 360px) {
+    /* .game-name {
+      font-size: 3rem;
+      margin-top: 2rem;
+    }  */
+
+}
+
+@media screen and (max-width: 420px) {
+  
+  
+}
+@media (max-width:665px) {
+  
+  body{
+    /* transform: scale(0.6); */
+    transform: scale(0.8);
+    overflow-x:hidden;   
+    /* scroll-behavior:unset;     */
+    background: url('./images/game-controller.jpg');
+    /* width: 50vw; */
+    background-size:cover;
+    background-position: center center;
+  }
+  body::before{
+    margin-top: 20vh;
+    background: url('./images/game-controller.jpg');
+    width: 50vw;
+    background-size:cover;
+    background-position: center center;
+    opacity: 0.5;
+  }
+  .game-name{
+    font-size: 5rem;
+  }
+}
+@media (max-width:530px) {
+  body{
+    transform: scale(0.7);
+  }
+  .game-name{
+    font-size: 4rem;
+  }
+}
+@media (max-width:444px) {
+  body{
+    transform: scale(0.6);
+    overflow-x:hidden;   
+    /* scroll-behavior:unset;     */
+    background: url('./images/game-controller.jpg');
+    /* width: 50vw; */
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  body::before{
+    margin-top: 20vh;
+    background: url('./images/game-controller.jpg');
+    background-repeat: no-repeat;
+    width: 50vw;
+    background-size:cover;
+    background-position: center center;
+    opacity: 0.5;
+  }
+  .game-name{
+    font-size: 3rem;
+  }
+}
+@media (max-width:355px) {
+  body{
+    transform: scale(0.5);
+  }
+  .game-name{
+    font-size: 2.4rem;
+  }
+  .left-score{
+    margin-top: -10rem;
+    margin-left: 4rem;
+  }
+  .left-name{
+    margin-top: 1rem;
+  }
+  .right-score{
+    margin-top: -10rem;
+    margin-right: 5rem;
+  }
+  .right-name{
+    margin-top: 1rem;
+    
+  }
+  .board-two{
+    width: auto;
+    display: block;
+    margin: auto;
+  }
+}
+@media (max-width:301px) {
+  body{
+    transform: scale(0.3);
+    /* /* max-height: 100vh; */
+    overflow-x:hidden;   
+    /* scroll-behavior:unset;     */
+    background: url('./images/game-controller.jpg');
+    /* width: 50vw; */
+    background-size:cover;
+    background-position: center center;
+    
+  }
+  .name{
+    margin-left:0px;
+    margin-right:15px;
+    
+  }
+  body::before{
+    margin-top: 20vh;
+    background: url('./images/game-controller.jpg');
+    width: 50vw;
+    background-size:cover;
+    background-position: center center;
+    opacity: 0.5;
+  }
+  .game-name{
+    font-size: 1.9rem;
+  }
+  #player-turn{
+    
+    font-size: 1rem;
+  }
+  
+}
+@media (max-width: 1200px) {
+  body{
+    transform: scale(0.95);
+    margin-top: 5rem;
+    /* transform: scale(0.6); */
+    overflow-x:hidden; 
+    overflow-y:var(--color1);  
+    /* scroll-behavior:unset;     */
+    background: url('./images/game-controller.jpg');
+    /* width: 50vw; */
+    /* background-repeat: no-repeat; */
+    background-size:cover;
+    background-position: center center;
+  }
+  body::before{
+    margin-top: 20vh;
+    /* background: url('./images/game-controller.jpg'); */
+    width: 50vw;
+    background-size:cover;
+    background-position: center center;
+    opacity: 0.5;
+  }
+  
+  
+}
+@media (min-width: 1200px) {
+  body{
+    transform: scale(0.8);
+    margin-top: 5rem;
+    /* transform: scale(0.6); */
+    /* overflow-x:hidden;  */
+    /* overflow-y:var(--color1);   */
+    /* scroll-behavior:unset;     */
+    background: url('./images/game-controller.jpg');
+    /* width: 50vw; */
+    /* background-repeat: no-repeat; */
+    background-size:cover;
+    background-position: center center;
+  }
+  body::before{
+    margin-top: 20vh;
+    /* background: url('./images/game-controller.jpg'); */
+    width: 50vw;
+    background-size:cover;
+    background-position: center center;
+    opacity: 0.5;
+  }
+}

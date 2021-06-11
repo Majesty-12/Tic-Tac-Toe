@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="./images/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap"rel="stylesheet">
+</head>
+
+<body>
+    <div class="center-making-box">
+
+    <!-- heading of the page -->
+
+    <h1 id="heading-of-page"> Be ready to Play Against the Super Computer</h1>
+    <div class="win">
+        <p class="winner hide">The Winner is</p>
+        <p class="x-text sign hide">X</p>
+        <p class="o-text sign hide">O</p>
+        <p class="winner draw hide">Match is Draw</p>
+    </div>
+
+
+    <!-- the option of selecting the difficulty level -->
+    <div class="card">
+        <div id="select-diff">Select your difficulty level :</div>
+        <div class="item select">
+            <form action="" class="form">
+                <select name="levels" id="levels">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="unbeatable">Invincible</option>
+                </select>
+            </form>
+        </div>
+
+        <!-- option for selecting the symbol which you like to play with -->
+
+        <div id="select-symbol">
+            Select the symbol you like to play with :
+        </div>
+        <div class="item player">
+            <button class="btn btn-p x">X</button>
+            <button class="btn btn-p o">O</button>
+        </div>
+        <div class="item board">
+            <button class="field"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field no-r"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field no-r"><p></p></button>
+            <button class="field no-b"><p></p></button>
+            <button class="field no-b"><p></p></button>
+            <button class="field no-b no-r"><p></p></button>
+        </div>
+        <div class="item rst">
+            <!-- restart button to restart the game -->
+            <button class="btn restart">Restart</button>
+        </div>
+    </div>
+
+
+    <!-- footer section  -->
+    <footer>
+        A <a href="">&nbsp;Naveen Kumar&nbsp; </a> Creation
+    </footer>
+</div>
+</body>
+<script src="scriptcomputer.js"></script>
